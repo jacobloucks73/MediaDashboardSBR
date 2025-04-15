@@ -1,17 +1,22 @@
-package com.smugalpaca.mediadashboard.util;
+package com.smugalpaca.mediadashboard.AuthUtility;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
+import org.springframework.security.core.Authentication;
 import java.util.Date;
 
 @Component
 public class JwtUtils {
 
-    private final String jwtSecret = "yourSecretKey"; // Replace with a secure key
-    private final int jwtExpirationMs = 86400000; // 1 day in milliseconds
+    @Value("${jwt.secret:defaultSecret}")
+    private String jwtSecret;
+
+    @Value("${jwt.expirationMs:3600000}")
+    private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
-        // Extract username or other user details as needed
         String username = authentication.getName();
         return Jwts.builder()
                 .setSubject(username)

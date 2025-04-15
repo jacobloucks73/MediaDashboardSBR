@@ -1,19 +1,18 @@
 package com.smugalpaca.mediadashboard.service;
 
-import com.smugalpaca.mediadashboard.payload.JwtResponse;
-import com.smugalpaca.mediadashboard.payload.LoginRequest;
-import com.smugalpaca.mediadashboard.payload.RegisterRequest;
+import com.smugalpaca.mediadashboard.AuthUtility.JwtResponse;
+import com.smugalpaca.mediadashboard.AuthUtility.LoginRequest;
+import com.smugalpaca.mediadashboard.AuthUtility.RegisterRequest;
 import com.smugalpaca.mediadashboard.repos.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.smugalpaca.mediadashboard.models.Users;
-import com.smugalpaca.mediadashboard.repository.UserRepository;
-import com.smugalpaca.mediadashboard.util.JwtUtils;
+import com.smugalpaca.mediadashboard.models.User;
+import com.smugalpaca.mediadashboard.repos.UserRepository;
+import com.smugalpaca.mediadashboard.AuthUtility.JwtUtils;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -21,12 +20,11 @@ import java.time.Instant;
 @Service
 public class AuthService {
 
-
     private UserRepository userRepository;
 
     // For hashing passwords
 
-    private BCryptPasswordEncoder passwordEncoder;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     // For authentication
 
@@ -36,9 +34,14 @@ public class AuthService {
 
     private JwtUtils jwtUtils;
 
+    public AuthService(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
+
     public void registerUser(RegisterRequest registerRequest) {
         // Create a new user entity and hash the password before saving
-        Users user = new Users();
+        User user = new User();
         user.setName(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());
         // Hash the password using BCrypt
@@ -47,9 +50,7 @@ public class AuthService {
         user.setUpdated_At(Timestamp.from(Instant.now()));
         user.setRole("user");
 
-
         userRepository.save(user);
-
 
     }
 

@@ -1,0 +1,6 @@
+For example, a REST API would use a GET request to retrieve a record.
+A POST request creates a new record. A PUT request updates a record, and a DELETE request deletes one.
+All HTTP methods can be used in API calls. A well-designed REST API is similar to a website running
+in a web browser with built-in HTTP functionality.
+
+https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md

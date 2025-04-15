@@ -1,4 +1,4 @@
-package com.smugalpaca.mediadashboard.payload;
+package com.smugalpaca.mediadashboard.AuthUtility;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,5 +14,4 @@ public class JwtResponse {
         this.token = token;
     }
 
-    // Getters and Setters
 }

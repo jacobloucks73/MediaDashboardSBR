@@ -1,4 +1,7 @@
 package com.smugalpaca.mediadashboard.repos;
 
-public class UserRepository {
+import org.springframework.data.repository.CrudRepository;
+import com.smugalpaca.mediadashboard.models.User;
+
+public interface UserRepository extends CrudRepository<User,Long> {
 }

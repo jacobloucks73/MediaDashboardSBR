@@ -1,9 +1,9 @@
 // AuthController.java
 package com.smugalpaca.mediadashboard.controllers;
 
-import com.smugalpaca.mediadashboard.payload.LoginRequest;
-import com.smugalpaca.mediadashboard.payload.RegisterRequest;
-import com.smugalpaca.mediadashboard.payload.JwtResponse;
+import com.smugalpaca.mediadashboard.AuthUtility.LoginRequest;
+import com.smugalpaca.mediadashboard.AuthUtility.RegisterRequest;
+import com.smugalpaca.mediadashboard.AuthUtility.JwtResponse;
 import com.smugalpaca.mediadashboard.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

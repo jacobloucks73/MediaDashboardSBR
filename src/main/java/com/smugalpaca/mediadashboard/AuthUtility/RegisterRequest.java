@@ -1,12 +1,14 @@
-package com.smugalpaca.mediadashboard.payload;
+package com.smugalpaca.mediadashboard.AuthUtility;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-
-public class LoginRequest {
+public class RegisterRequest {
     private String username;
+    private String email;
     private String password;
+
+
 }

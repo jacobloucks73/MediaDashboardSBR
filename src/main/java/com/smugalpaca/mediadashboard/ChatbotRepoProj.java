@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MediaDashboardApplication {
+public class ChatbotRepoProj {
 
     public static void main(String[] args) {
-        SpringApplication.run(MediaDashboardApplication.class, args);
+        SpringApplication.run(ChatbotRepoProj.class, args);
     }
 
 }
